@@ -11,9 +11,8 @@ driver.get("https://web.whatsapp.com/")
 wait = WebDriverWait(driver, 600) 
 
 # Target user
-target = '"_amartya_"'
+target = '"Sayantan Banerjee"'
 
-string = "Hi this is a testing whatsapp bot. Please ignore the messages."
 time.sleep(10) # time to load the page
 x_arg = '//span[contains(@title,' + target + ')]'
 print(x_arg)
