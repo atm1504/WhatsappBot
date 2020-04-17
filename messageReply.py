@@ -12,7 +12,7 @@ driver.get("https://web.whatsapp.com/")
 wait = WebDriverWait(driver, 600) 
 
 # Target user
-target = '"_amartya_"'
+target = '"Ashish Anjan"'
 
 time.sleep(10) # time to load the page
 x_arg = '//span[contains(@title,' + target + ')]'
