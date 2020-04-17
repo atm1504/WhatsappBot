@@ -33,6 +33,7 @@ def getMessage(last_mssg):
     # Emoji will work only in Firefrox driver. Chrome web driver doesnot support emojis
     # emojis = lm.find_elements_by_tag_name("img")
     if lm.text == "Stop":
+        time.sleep(0.5)
         getMessage("Stop")
     if str(lm.text) != last_mssg :
         last_mssg = str(lm.text)
