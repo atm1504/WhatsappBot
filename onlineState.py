@@ -1,3 +1,6 @@
+# The following script has been developed by Amartya Mondal.
+# For more details visit https://atm1504.in
+# Follow me at https://github.com/atm1504
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
