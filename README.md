@@ -5,24 +5,31 @@ To use the script, install the following dependencies first:
 * Selenium
 * Chrome Web Driver (mac version already provided inside driver folder)
 
+## Bots Developed 
+* Bot to spy on a friend. This bot spies when you friend goes online and when he/she goes offline.
+* An AI (can be used without smart reply also) based bot to chat with a friend.
+* A bot to reply users whenever someone texts you.
+* A bot to send a message multiple time.
+* A bot to reply your friends whenever they replies on your WhatsApp status.
+
 ### Script to message someone (simple_message.py)
-* specify the chrome driver path while initializing Chrome
+* Specify the chrome driver path while initializing Chrome
 * Write the target name in the target variable
 * Execute ```python3 simple_message.py```
 
 ### Script to keep an eye on a user (onlineState.py)
-* specify the chrome driver path while initializing Chrome
+* Specify the chrome driver path while initializing Chrome
 * Write the target name in the target variable
 * Choose the last seen visibility of the user
 * Execute ```python3 onlineState.py```
 
 ### Script to reply messages of an user (messageReply.py)
-* specify the chrome driver path while initializing Chrome
+* Specify the chrome driver path while initializing Chrome
 * Write the target name in the target variable
 * Execute ```python3 messageReply.py```e
 
 ### Script to auto reply message to the users who sends u a new message (newMessageReply.py)
-* specify the chrome driver path while initializing Chrome
+* Specify the chrome driver path while initializing Chrome
 * Execute ```python3 newMessageReply.py```
 
 Here, I have used ```Microsoft Azure QnA Maker``` to make give smart replies. You can also it. If you don't want to make use of AI bots then simply adjust this to values ```ans = getAnswer(lm_text); sendMessage(ans)``` in the file.
