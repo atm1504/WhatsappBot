@@ -6,11 +6,11 @@ To use the script, install the following dependencies first:
 * Chrome Web Driver (mac version already provided inside driver folder)
 
 ## Bots Developed 
-* Bot to spy on a friend. This bot spies when you friend goes online and when he/she goes offline.
+* Bot to spy on a friend. This bot spy when your friend goes online and when he/she goes offline.
 * An AI (can be used without smart reply also) based bot to chat with a friend.
-* A bot to reply users whenever someone texts you.
-* A bot to send a message multiple time.
-* A bot to reply your friends whenever they replies on your WhatsApp status.
+* A bot to reply to users whenever someone texts you.
+* A bot to send a message multiple times.
+* A bot to reply to your friends whenever they reply on your WhatsApp status.
 
 ### Script to message someone (simple_message.py)
 * Specify the chrome driver path while initializing Chrome
