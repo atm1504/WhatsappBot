@@ -1,7 +1,0 @@
-//*[(@id = "main")]//*[contains(concat( " ", @class, " " ), concat( " ", "b74", " " ))]
-
-For new messages
-//*[contains(concat( " ", @class, " " ), concat( " ", "CxUIE", " " ))]//*[contains(concat( " ", @class, " " ), concat( " ", "_3Bxar", " " ))]//span
-
-
-//*[contains(concat( " ", @class, " " ), concat( " ", "OUeyt", " " ))]

@@ -1,3 +1,6 @@
+# The following script has been developed by Amartya Mondal.
+# For more details visit https://atm1504.in
+# Follow me at https://github.com/atm1504
 from selenium import webdriver 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC 
@@ -12,24 +15,40 @@ driver.get("https://web.whatsapp.com/")
 wait = WebDriverWait(driver, 600)
 
 def getMessage():
-    msg_path = '//*[contains(concat( " ", @class, " " ), concat( " ", "message-in", " " ))]//*[contains(concat( " ", @class, " " ), concat( " ", "_3zb-j", " " ))]'
-    all_mssgs = driver.find_elements_by_xpath(msg_path)
+    base_mssg_path = '//*[contains(concat( " ", @class, " " ), concat( " ", "message-in", " " ))]'
+    all_mssgs = driver.find_elements_by_xpath(base_mssg_path)
     lm = all_mssgs[-1]
-    sendMessage(lm.text)
+    mssg_text = lm.text.split("\n")
+    try:
+        replied = lm.find_element_by_class_name("_3FXB1")
+        if str(replied.text) != "You · Status":
+            raise Exception("Not status")
+        lm_text = "Thank you for replying to my status."
+        print("Is status")
+    except:
+        print("Is not status")
+        print(mssg_text)
+        lm_text = ""
+        if len(mssg_text) > 2:
+            if mssg_text[0] != "You":
+                lm_text += "Hey " + mssg_text[0]
+            lm_text += mssg_text[2]
+        else:
+            lm_text += mssg_text[0]
+    sendMessage(lm_text)
 
 def sendMessage(mssg):
     inp_xpath = '//div[@class="_2S1VP copyable-text selectable-text"][@dir="ltr"][@data-tab="1"]'
     input_box = wait.until(EC.presence_of_element_located((By.XPATH, inp_xpath)))
-    mssg = "Thank you for texting. I will reach u soon."
+    # mssg = "Thank you for texting. I will reach u soon."
     input_box.send_keys(mssg + Keys.ENTER)
+    print(mssg)
 
 def replyTarget(target):
     x_arg = '//span[contains(@title,' + target + ')]'
     print(x_arg)
     group_title = wait.until(EC.presence_of_element_located((By.XPATH, x_arg)))
-    print("Here-1")
     group_title.click()
-    print("Clicked")
     getMessage()
 
 def getTarget():
