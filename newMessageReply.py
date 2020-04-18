@@ -1,6 +1,7 @@
 # The following script has been developed by Amartya Mondal.
 # For more details visit https://atm1504.in
 # Follow me at https://github.com/atm1504
+import json
 from selenium import webdriver 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC 
@@ -10,9 +11,29 @@ import time
 from datetime import datetime
 
 driver = webdriver.Chrome('driver/chromedriver') 
-
 driver.get("https://web.whatsapp.com/") 
 wait = WebDriverWait(driver, 600)
+
+# Bot Info
+url = 'url of your chat bot'
+headers = {
+    'Authorization': 'Authentication key',
+    'Content-type': 'application/json',
+}
+
+# This function fetches data from the bot.
+def getAnswer(query):
+    try:
+        print(query)
+        data = "{'question':'" + query + "'}"
+        response = requests.post(url, headers=headers, data=data)
+        ans_text = json.loads(response.text)
+        entire_response = ans_text["answers"]
+        ans = entire_response[0]["answer"]
+        print(ans)
+        return ans
+    except:
+        return query
 
 def getMessage():
     base_mssg_path = '//*[contains(concat( " ", @class, " " ), concat( " ", "message-in", " " ))]'
@@ -35,7 +56,9 @@ def getMessage():
             lm_text += mssg_text[2]
         else:
             lm_text += mssg_text[0]
-    sendMessage(lm_text)
+    # Get answer of the query
+    ans = getAnswer(lm_text)
+    sendMessage(ans)
 
 def sendMessage(mssg):
     inp_xpath = '//div[@class="_2S1VP copyable-text selectable-text"][@dir="ltr"][@data-tab="1"]'

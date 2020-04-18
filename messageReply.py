@@ -1,7 +1,7 @@
 # The following script has been developed by Amartya Mondal.
 # For more details visit https://atm1504.in
 # Follow me at https://github.com/atm1504
-
+import json
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -9,6 +9,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
 from datetime import datetime
+import requests
+
+# Bot Info
+url = 'url of your chat bot'
+headers = {
+    'Authorization': 'Authentication key',
+    'Content-type': 'application/json',
+}
 
 driver = webdriver.Chrome('driver/chromedriver')
 driver.get("https://web.whatsapp.com/")
@@ -22,6 +30,20 @@ x_arg = '//span[contains(@title,' + "'" + target + "'" + ')]'
 print(x_arg)
 group_title = wait.until(EC.presence_of_element_located((By.XPATH, x_arg)))
 group_title.click()
+
+# This function fetches data from the bot.
+def getAnswer(query):
+    try:
+        print(query)
+        data = "{'question':'" + query + "'}"
+        response = requests.post(url, headers=headers, data=data)
+        ans_text = json.loads(response.text)
+        entire_response = ans_text["answers"]
+        ans = entire_response[0]["answer"]
+        print(ans)
+        return ans
+    except:
+        return query
 
 def sendMessage(mssg):
     inp_xpath = '//div[@class="_2S1VP copyable-text selectable-text"][@dir="ltr"][@data-tab="1"]'
@@ -50,7 +72,8 @@ def getMessage(last_mssg):
     if lm_text == last_mssg:
         time.sleep(1)
         getMessage(last_mssg)
-    sendMessage(lm_text)
+    ans = getAnswer(lm_text)
+    sendMessage(ans)
     time.sleep(1)
     getMessage(lm_text)
 print("ON")
