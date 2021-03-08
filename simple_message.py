@@ -1,4 +1,4 @@
-# The following script has been developed by Amartya Mondal.
+#Copyright@Souhardya & Amartya.
 # For more details visit https://atm1504.in
 # Follow me at https://github.com/atm1504
 from selenium import webdriver 
@@ -9,12 +9,12 @@ from selenium.webdriver.common.by import By
 import time
 from datetime import datetime
 
-driver = webdriver.Chrome('driver/chromedriver') 
+driver = webdriver.Chrome() 
 
 driver.get("https://web.whatsapp.com/") 
 wait = WebDriverWait(driver, 600) 
 
-target = '"Target name here"'
+target = '"Target Name"'
 
 string = "Hi this is a testing whatsapp bot. Please ignore the messages."
 
@@ -23,9 +23,10 @@ print(x_arg)
 group_title = wait.until(EC.presence_of_element_located(( 
 	By.XPATH, x_arg))) 
 group_title.click() 
-inp_xpath = '//div[@class="_2S1VP copyable-text selectable-text"][@dir="ltr"][@data-tab="1"]'
+inp_xpath='//*[@id="main"]/footer/div[1]/div[2]/div/div[2]'
 input_box = wait.until(EC.presence_of_element_located(( 
 	By.XPATH, inp_xpath))) 
+#50 means 50 times
 for i in range(50):
 	now = datetime.now()
 	current_time = now.strftime("%H:%M:%S")
